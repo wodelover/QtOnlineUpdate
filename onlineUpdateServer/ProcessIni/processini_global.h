@@ -1,0 +1,12 @@
+#ifndef PROCESSINI_GLOBAL_H
+#define PROCESSINI_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(PROCESSINI_LIBRARY)
+#  define PROCESSINISHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define PROCESSINISHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // PROCESSINI_GLOBAL_H

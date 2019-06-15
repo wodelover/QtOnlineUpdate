@@ -39,3 +39,10 @@ DEPENDPATH += $$PWD/../ProcessIni
 
 HEADERS += \
     runtime.h
+
+# Logger
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Logger/release/ -lLogger
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Logger/debug/ -lLogger
+else:unix: LIBS += -L$$OUT_PWD/../Logger/ -lLogger
+INCLUDEPATH += $$PWD/../Logger
+DEPENDPATH += $$PWD/../Logger

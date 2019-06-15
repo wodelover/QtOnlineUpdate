@@ -44,9 +44,7 @@ public:
         Sha256,
         Sha512,
         Sha3_256,
-        Sha3_512,
-        Keccak_256,
-        Keccak_512,
+        Sha3_512
     };
 
     static ProcessIni *getInstance();

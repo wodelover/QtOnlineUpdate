@@ -72,8 +72,6 @@ QString ProcessIni::encryptionData(const QByteArray &data, ProcessIni::Encryptio
     case Sha512: encryptionType = QCryptographicHash::Sha512; break;
     case Sha3_256: encryptionType = QCryptographicHash::Sha3_256; break;
     case Sha3_512: encryptionType = QCryptographicHash::Sha3_512; break;
-    case Keccak_256: encryptionType = QCryptographicHash::Keccak_256; break;
-    case Keccak_512:  encryptionType = QCryptographicHash::Keccak_512; break;
     }
 
     QByteArray encryptionStr = QCryptographicHash::hash(data,static_cast<QCryptographicHash::Algorithm>(encryptionType));

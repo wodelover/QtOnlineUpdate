@@ -1,6 +1,8 @@
 #include "runtime.h"
 #include <processini.h>
 #include <QFile>
+#include <logger.h>
+#include <QDateTime>
 
 RunTime::RunTime(QObject *parent) : QObject(parent)
 {
@@ -12,7 +14,12 @@ RunTime::RunTime(QObject *parent) : QObject(parent)
 void RunTime::print(QVariant msg)
 {
     QString m = msg.toString();
-    printf("%s\n",m.toStdString().c_str());
+
+    QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss ");
+
+    time += m;
+
+    printf("%s\n",time.toStdString().c_str());
 }
 
 bool RunTime::checkNeedUpdate(QString filename, QString version)
@@ -169,7 +176,7 @@ void RunTime::hasNewDataFromClient(QString ip, int port, QByteArray data)
             QString filename = m_updateInfo.value(ip);
             QString fileVersion = ProcessIni::getInstance()->readIni(FILES,filename).toString();
             sendNewFileVersion(ip,fileVersion);
-            print(ip + ":  " + msg[1] + " new version is: " + fileVersion);
+            print(ip + ":  " + filename + " new version is: " + fileVersion);
         }else{
             print(ip + ": RequestNewFile packet error,this time update will be give up...");
         }

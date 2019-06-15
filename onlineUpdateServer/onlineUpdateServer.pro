@@ -3,4 +3,5 @@ TEMPLATE = subdirs
 SUBDIRS += \
     ProcessIni \
     TcpServerCom \
-    onlineUpdateServer
+    onlineUpdateServer \
+    Logger
